@@ -2,6 +2,8 @@
 @Service
 class {{obj.class_name}}Service {
 
+  private final static Logger LOGGER = LoggerFactory.getClass({{obj.class_name}}Service.class);
+
   private  {{obj}}Dao dao;
 
 
@@ -9,8 +11,13 @@ class {{obj.class_name}}Service {
     this.dao = dao;
   }
   void adicionar({{obj.class_name}} obj){
-    this.dao.gravar(obj);
-
+    try{
+      this.dao.gravar(obj);
+    }
+    catch(e){
+      LOGGER.error("Falha {}", e.getMessage());
+      
+    }
   }
 
   void atualizar({{obj.class_name}} obj){

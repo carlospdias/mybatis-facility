@@ -13,7 +13,7 @@
     {% endfor %}
   </resultMap>
   
-   <select id="findById" resultMap="{{obj.class_name}}ResultMap">
+   <select id="select_byId" resultMap="{{obj.class_name}}ResultMap">
         SELECT  
         {% for field in obj.fields %}
           {{obj.table_alias}}.{{field.column}},
@@ -23,7 +23,7 @@
         WHERE {{obj.table_alias}}.{{obj.id_column}} = #{id}  
     </select>
 
-    <select id="findAll" resultMap="UserResultMap">
+    <select id="select_all" resultMap="UserResultMap">
         SELECT  {% for field in obj.fields %}
           {{obj.table_alias}}.{{field.column}},
         {% endfor %} FROM {{obj.table}} {{obj.table_alias}}

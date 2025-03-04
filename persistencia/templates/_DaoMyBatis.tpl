@@ -17,11 +17,11 @@ class {{obj.class_name}}DaoMyBatis implements  {{obj.class_name}}Dao {
   }
 
   List<{{obj.class_name}}> recuperarTodos(){
-    this.session.select("{{obj.namespace}}.select", obj);
+    this.session.select("{{obj.namespace}}.select_all", obj);
   }
 
   {{obj.class_name}} recuperarPorId(Long id){
-    this.session.select("{{obj.namespace}}.selectById", id);
+    this.session.select("{{obj.namespace}}.select_byId", id);
   }
   
   void apagar({{obj.class_name}} obj){
