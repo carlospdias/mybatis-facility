@@ -1,0 +1,33 @@
+[
+
+    {
+        "class_name":"Pessoa",
+        "namespace":"xxxxxxxxxxxxxxxx",
+        "package":"br.jus.tse.nmeses",
+        "table":"PESSOAS",
+        "table_alias":"pess",
+        "id_column":"ID",
+        "fields":[
+            {"is_id":"True",      "property":"id",             "column":"ID"                   ,"javaType":"Long",      "jdbcType":"NUMBER",     "restriction":"not null"},
+            {"is_id":"False",     "property":"nomeCompleto",   "column":"NM_PESSOA"            ,"javaType":"string",    "jdbcType":"VARCHAR",     "restriction":"not null"},
+            {"is_id":"False",     "property":"nascimento",     "column":"DT_NASCIMENTO"        ,"javaType":"LocalDate", "jdbcType":"DATE",     "restriction":"not null"},
+            {"is_id":"False",     "property":"telefones",      "column":"NONE"                 ,"javaType":"list#Telefone"     , "jdbcType":"NONE",     "restriction":"not null"}
+        ]
+    },
+
+    {
+        "class_name":"Telefone",
+        "table":"TELEFONES",
+        "table_alias":"tel",
+        "namespace":"xxxxxxxxxxxxxxxx",
+        "package":"br.jus.tse.nmeses",
+        "id_column":"ID",
+        "fields":[
+            {"is_id":"True",      "property":"id",             "column":"ID"                   ,"javaType":"Long",      "jdbcType":"NUMBER",     "restriction":"not null"},
+            {"is_id":"False",     "property":"ddd",            "column":"DDD"            ,"javaType":"string",    "jdbcType":"VARCHAR",     "restriction":"not null"},
+            {"is_id":"False",     "property":"numero",         "column":"NR_TELEFONE"        ,"javaType":"string", "jdbcType":"VARCHAR",     "restriction":"not null"}
+        ]
+    }
+    
+
+]
