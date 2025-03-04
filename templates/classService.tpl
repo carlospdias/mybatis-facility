@@ -9,23 +9,23 @@ class {{obj.class_name}}Service {
     this.dao = dao;
   }
   void adicionar({{obj.class_name}} obj){
-    this.session.insert("{{obj.namespace}}.insert", obj);
+    this.dao.gravar(obj);
 
   }
 
   void atualizar({{obj.class_name}} obj){
-    this.session.update("{{obj.namespace}}.update", obj);
+    this.dao.regravar(obj);
   }
 
   List<{{obj.class_name}}> buscarTodos(){
-    this.session.select("{{obj.namespace}}.select", obj);
+    return this.dao.recuperar();
   }
 
-  {{obj.class_name}} buscarPorid(Long id){
-    this.session.select("{{obj.namespace}}.selectById", id);
+  {{obj.class_name}} buscarPorId(Long id){
+    return this.dao.recuperarPorId(id);
   }
   
   void excluir({{obj.class_name}} obj){
-    this.session.delete("{{obj.namespace}}.delete", obj);
+    return this.dao.apagar(obj);
   }
 }
