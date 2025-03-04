@@ -20,7 +20,7 @@ class {{obj.class_name}}Service {
     this.session.select("{{obj.namespace}}.select", obj);
   }
 
-  List<{{obj.class_name}}> buscarPorid(Long id){
+  {{obj.class_name}} buscarPorid(Long id){
     this.session.select("{{obj.namespace}}.selectById", id);
   }
   
