@@ -1,4 +1,5 @@
 
+@Service
 class {{obj.class_name}}Service {
 
   private  {{obj}}Dao dao;

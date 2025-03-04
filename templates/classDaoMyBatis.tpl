@@ -1,4 +1,5 @@
 
+@Repository
 class {{obj.class_name}}DaoMyBatis implements  {{obj.class_name}}Dao {
 
   private Session session;
