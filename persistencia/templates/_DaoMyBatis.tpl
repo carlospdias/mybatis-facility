@@ -7,12 +7,12 @@ class {{obj.class_name}}DaoMyBatis implements  {{obj.class_name}}Dao {
   public {{obj.class_name}}DaoMyBatis(Session session){
     this.session = session;
   }
-  void gravar({{obj.class_name}} obj){
+  Optional<{{obj.class_name}}> gravar({{obj.class_name}} obj){
     this.session.insert("{{obj.namespace}}.insert", obj);
 
   }
 
-  void regravar({{obj.class_name}} obj){
+  Optional<{{obj.class_name}}> regravar({{obj.class_name}} obj){
     this.session.update("{{obj.namespace}}.update", obj);
   }
 
@@ -20,7 +20,7 @@ class {{obj.class_name}}DaoMyBatis implements  {{obj.class_name}}Dao {
     this.session.select("{{obj.namespace}}.select_all", obj);
   }
 
-  {{obj.class_name}} recuperarPorId(Long id){
+  Optional<{{obj.class_name}}> recuperarPorId(Long id){
     this.session.select("{{obj.namespace}}.select_byId", id);
   }
   
