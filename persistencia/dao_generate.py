@@ -22,8 +22,15 @@ class DaoGenerate(object):
             name = config['class_name'].lower()+"-mapper.xml"
             self.__store__(name, content)
     
+    def _generate_IntefaceDao(self):
+        template = self.env.get_template("_Dao.tpl")
+        for config in self.source:
+            content = template.render( obj = config)
+            name = config['class_name']+"Dao.java"
+            self.__store__(name, content)
 
     def generateDao(self):
         self._generate_MyBatisMappers()
+        self._generate_IntefaceDao()
         
 
