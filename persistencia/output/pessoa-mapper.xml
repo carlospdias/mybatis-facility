@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="aventura.pessoa.Pessoa">
+ 
+  <resultMap id="PessoaResultMap" type="br.jus.tse.nmeses.Pessoa">
+    <id  property="id" column="ID" javaType="Long" jdbcType="NUMBER" /> 
+    <result  property="nomeCompleto" column="NM_PESSOA" javaType="string" jdbcType="VARCHAR" /> 
+    <result  property="nascimento" column="DT_NASCIMENTO" javaType="LocalDate" jdbcType="DATE" /> 
+    <result  property="telefones" column="NONE" javaType="list#Telefone" jdbcType="NONE" /> 
+    
+  </resultMap>
+  
+  <select id="select_byId" resultMap="PessoaResultMap">
+      SELECT  
+        pess.ID,
+        pess.NM_PESSOA,
+        pess.DT_NASCIMENTO,
+        pess.NONE,
+        
+      FROM
+          PESSOAS pess
+      WHERE pess.ID = #{id}  
+  </select>
+
+  <select id="select_all" resultMap="PessoaResultMap">
+      SELECT  
+        pess.ID,
+        pess.NM_PESSOA,
+        pess.DT_NASCIMENTO,
+        pess.NONE,
+         
+      FROM 
+        PESSOAS pess
+  </select>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO PESSOAS
+        (ID),
+        (NM_PESSOA),
+        (DT_NASCIMENTO),
+        (NONE),
+        
+      VALUES (
+        #{id},
+        #{nomeCompleto},
+        #{nascimento},
+        #{telefones},
+        )
+        <selectKey resultType="Long" order="BEFORE" keyColumn="ID" keyProperty="id">
+          CALL IDENTITY()
+        </selectKey>
+  </insert>
+
+  <update id="update">
+      UPDATE PESSOAS SET 
+        NM_PESSOA= #{nomeCompleto},
+        DT_NASCIMENTO= #{nascimento},
+        NONE= #{telefones},
+        
+      WHERE 
+        ID = #{id}  
+  </update>
+
+  <delete id="delete">
+      DELETE FROM PESSOAS WHERE ID = #{id}  
+  </delete>
+</mapper>

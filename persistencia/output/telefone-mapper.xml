@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="aventura.pessoa.Telefone">
+ 
+  <resultMap id="TelefoneResultMap" type="br.jus.tse.nmeses.Telefone">
+    <id  property="id" column="ID" javaType="Long" jdbcType="NUMBER" /> 
+    <result  property="ddd" column="DDD" javaType="string" jdbcType="VARCHAR" /> 
+    <result  property="numero" column="NR_TELEFONE" javaType="string" jdbcType="VARCHAR" /> 
+    
+  </resultMap>
+  
+  <select id="select_byId" resultMap="TelefoneResultMap">
+      SELECT  
+        tel.ID,
+        tel.DDD,
+        tel.NR_TELEFONE,
+        
+      FROM
+          TELEFONES tel
+      WHERE tel.ID = #{id}  
+  </select>
+
+  <select id="select_all" resultMap="TelefoneResultMap">
+      SELECT  
+        tel.ID,
+        tel.DDD,
+        tel.NR_TELEFONE,
+         
+      FROM 
+        TELEFONES tel
+  </select>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO TELEFONES
+        (ID),
+        (DDD),
+        (NR_TELEFONE),
+        
+      VALUES (
+        #{id},
+        #{ddd},
+        #{numero},
+        )
+        <selectKey resultType="Long" order="BEFORE" keyColumn="ID" keyProperty="id">
+          CALL IDENTITY()
+        </selectKey>
+  </insert>
+
+  <update id="update">
+      UPDATE TELEFONES SET 
+        DDD= #{ddd},
+        NR_TELEFONE= #{numero},
+        
+      WHERE 
+        ID = #{id}  
+  </update>
+
+  <delete id="delete">
+      DELETE FROM TELEFONES WHERE ID = #{id}  
+  </delete>
+</mapper>

@@ -2,7 +2,7 @@
 
     {
         "class_name":"Pessoa",
-        "namespace":"xxxxxxxxxxxxxxxx",
+        "namespace":"aventura.pessoa",
         "package":"br.jus.tse.nmeses",
         "table":"PESSOAS",
         "table_alias":"pess",
@@ -19,7 +19,7 @@
         "class_name":"Telefone",
         "table":"TELEFONES",
         "table_alias":"tel",
-        "namespace":"xxxxxxxxxxxxxxxx",
+        "namespace":"aventura.pessoa",
         "package":"br.jus.tse.nmeses",
         "id_column":"ID",
         "fields":[
